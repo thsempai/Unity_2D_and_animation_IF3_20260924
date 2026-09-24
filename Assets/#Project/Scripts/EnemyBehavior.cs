@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -15,25 +16,59 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Time.deltaTime * speed * Vector2.right);
+        Move();
+        CheckGround();
+        CheckCollision();
+    }
 
-        Vector2 point;
+    private void CheckGround()
+    {
+        Vector2 pointCheckGround;
+
         if (speed > 0)
         {
-            point = new(col.bounds.max.x + 0.01f, col.bounds.min.y);
+            pointCheckGround = new(col.bounds.max.x + 0.01f, col.bounds.min.y);
         }
         else
         {
-            point = new(col.bounds.min.x - 0.01f, col.bounds.min.y);
+            pointCheckGround = new(col.bounds.min.x - 0.01f, col.bounds.min.y);
         }
 
-        Debug.DrawRay(point, Vector2.down * 0.05f, Color.purple);
-
-        RaycastHit2D hit = Physics2D.Raycast(point, Vector2.down, 0.05f);
+        Debug.DrawRay(pointCheckGround, Vector2.down * 0.05f, Color.purple);
+        RaycastHit2D hit = Physics2D.Raycast(pointCheckGround, Vector2.down, 0.05f);
         if (hit.collider == null)
         {
             speed *= -1;
         }
     }
 
+    private void CheckCollision()
+    {
+
+        Vector2 pointCheckOther;
+        Vector2 direction;
+
+        if (speed > 0)
+        {
+            pointCheckOther = new(col.bounds.max.x + 0.01f, col.bounds.min.y + 0.01f);
+            direction = Vector2.right;
+        }
+        else
+        {
+            pointCheckOther = new(col.bounds.min.x - 0.01f, col.bounds.min.y + 0.01f);
+            direction = Vector2.left;
+        }
+
+        Debug.DrawRay(pointCheckOther, direction * 0.01f, Color.cyan);
+        RaycastHit2D hit = Physics2D.Raycast(pointCheckOther, direction, 0.01f);
+        if (hit.collider != null)
+        {
+            speed *= -1;
+        }
+    }
+
+    private void Move()
+    {
+        transform.Translate(Time.deltaTime * speed * Vector2.right);
+    }
 }
