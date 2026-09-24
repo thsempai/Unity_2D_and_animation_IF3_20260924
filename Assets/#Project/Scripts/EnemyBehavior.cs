@@ -2,16 +2,19 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class EnemyBehavior : MonoBehaviour
 {
 
     [SerializeField] private float speed = 5f;
 
     private Collider2D col;
+    private SpriteRenderer renderer;
 
     private void Awake()
     {
         col = GetComponent<Collider2D>();
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -19,6 +22,12 @@ public class EnemyBehavior : MonoBehaviour
         Move();
         CheckGround();
         CheckCollision();
+        CheckSpriteFlipX();
+    }
+
+    private void CheckSpriteFlipX()
+    {
+        renderer.flipX = speed > 0;
     }
 
     private void CheckGround()

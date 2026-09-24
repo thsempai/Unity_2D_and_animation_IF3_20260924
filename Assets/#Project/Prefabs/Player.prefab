@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9128109358532799850}
   - component: {fileID: 3531169512876171674}
-  - component: {fileID: 1903864658816639883}
   - component: {fileID: 5317036828602327233}
+  - component: {fileID: 1838617925080939939}
+  - component: {fileID: 778291708499805469}
+  - component: {fileID: 7815841642457293198}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -83,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -247131658, guid: 6b88fbb6b12b29e46a0c9ddddbb3a315, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,8 +95,35 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &1903864658816639883
-CircleCollider2D:
+--- !u!50 &5317036828602327233
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8606812048683460612}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
+--- !u!60 &1838617925080939939
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,31 +157,55 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!50 &5317036828602327233
-Rigidbody2D:
-  serializedVersion: 5
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.625, y: 0.71875}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.078391194, y: 0.72478724}
+      - {x: -0.16466987, y: 0.67835855}
+      - {x: -0.2510345, y: 0.49891758}
+      - {x: -0.29493845, y: 0.2423017}
+      - {x: -0.17397916, y: 0.120984316}
+      - {x: -0.16921687, y: -0.008780718}
+      - {x: 0.16043603, y: 0.0035123825}
+      - {x: 0.16147041, y: 0.1316638}
+      - {x: 0.2827438, y: 0.22570801}
+      - {x: 0.28440166, y: 0.46766734}
+      - {x: 0.2504505, y: 0.5636687}
+      - {x: 0.11198521, y: 0.7257745}
+  m_UseDelaunayMesh: 1
+--- !u!114 &778291708499805469
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8606812048683460612}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349a855b89d6a43478a1199dfdcd3bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpPlayer
+  inputActions: {fileID: -944628639613478452, guid: 209ba13e53d5ba448bbfcfecc4f0e158, type: 3}
+  jumpForce: 300
+--- !u!114 &7815841642457293198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8606812048683460612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5399ea334c207c04c9a13a0e3111cd61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovePlayer
+  inputActions: {fileID: -944628639613478452, guid: 209ba13e53d5ba448bbfcfecc4f0e158, type: 3}
+  speed: 5
